@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>ASTRA — Game Development · VIT Pune</title>
+<meta name="description" content="Astra Game Development — the dev wing of the Astra club at Vishwakarma Institute of Technology, Pune. Game jams, engines, and student-made games." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="dev">
+
+  <!-- particle scene -->
+  <canvas id="webgl"></canvas>
+  <div id="fallback" aria-hidden="true"></div>
+  <div id="pageWipe"></div>
+
+  <!-- custom cursor -->
+  <div id="cur-glow"></div>
+  <div id="cur-dot"></div>
+
+    <!-- loader -->
+  <div id="loader">
+    <div id="logoWrap" class="logo-wrap">
+      <img id="logoImg" class="logo-img" alt="ASTRA — Gamers and Developers" />
+      <div id="logoSlices" class="logo-slices" aria-hidden="true"></div>
+    </div>
+    <div class="bar"><b id="loadbar"></b></div>
+    <div class="meta"><span id="loadstate">INITIALIZING</span><span id="loadpct">0%</span></div>
+  </div>
+
+  <!-- top bar -->
+  <div class="topbar">
+    <a href="#hero" class="logo" data-hover><span class="d"><span></span><img src="club_logo.jpeg" alt="ASTRA — Gamers and Developers" /></span></a>
+    <div class="topbar-actions">
+      <button class="cta mode" id="modeBtn" type="button" data-hover data-target="index.html"><span id="modeLbl">Gaming</span></button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdT6WcM9xO-qMq2W5yacxQMb5MwDA6PIy2UEm-OPOH710g5Cw/viewform?usp=header" class="cta join" data-hover data-scroll><span>Join Us</span></a>
+      <button class="navtoggle" id="navtoggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <!-- side nav -->
+  <nav class="sidenav" id="sidenav" aria-label="Development tracks">
+    <div class="lbl">PICK YOUR<br>STACK</div>
+    <ul>
+      <li><a href="#" data-card="GAME DESIGNING" data-hover data-scroll><span class="n">01</span>Game Designing</a></li>
+      <li><a href="#" data-card="ANIMATION" data-hover data-scroll><span class="n">02</span>Animation</a></li>
+      <li><a href="#" data-card="WORKSHOP" data-hover data-scroll><span class="n">03</span>Workshop</a></li>
+      <li><a href="#" data-card="CORE" data-hover data-scroll><span class="n">04</span>CORE</a></li>
+      <li><a href="#" data-card="ABOUT ASTRA" data-hover data-scroll><span class="n">05</span>ABOUT ASTRA</a></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="kicker">GAME DEVELOPMENT · VISHWAKARMA INSTITUTE OF TECHNOLOGY, PUNE</div>
+        <h1 class="hero-h">
+          <span class="ln"><span class="scramble" data-text="WHERE">WHERE</span></span>
+          <span class="ln"><span class="scramble" data-text="MAKERS">MAKERS</span></span>
+          <span class="ln accent"><span class="scramble" data-text="ASSEMBLE">ASSEMBLE</span></span>
+        </h1>
+        <div class="subrow">
+          <p class="tagline"><b>PLAY · BUILD · CONNECT · GROW.</b><br>The dev wing of Astra — game jams, engine deep-dives, and shipping student-made games.</p>
+        </div>
+      </div>
+      <div class="scroll-hint">SCROLL<i></i></div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+      <div class="work-head">
+        <h2 class="scramble-view" data-text="THE WORKSHOP">THE WORKSHOP</h2>
+        <p>Engines, jams, and disciplines — where members learn to design, build, and ship real games.</p>
+      </div>
+      <div class="grid" id="grid"><!-- tiles injected --></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="eye">GOT AN IDEA?</div>
+      <h2><span class="accent scramble-view" data-text="BUILD WITH US">BUILD WITH US</span></h2>
+      <a class="email" href="mailto:astra.club@vit.edu" data-hover>astra.club@vit.edu</a>
+      <div class="socials">
+        <a href="https://discord.gg/hfPhj2azs" aria-label="Discord" data-hover><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 5.3A16 16 0 0 0 15.4 4l-.2.4a12 12 0 0 1 3.4 1.7 11 11 0 0 0-9.2 0A12 12 0 0 1 12.8 4.4L12.6 4a16 16 0 0 0-3.9 1.3C4.9 9.2 4.3 13 4.6 16.7a16 16 0 0 0 4.8 2.4l.6-1a10 10 0 0 1-1.6-.8l.4-.3a11.5 11.5 0 0 0 9.2 0l.4.3a10 10 0 0 1-1.6.8l.6 1a16 16 0 0 0 4.8-2.4c.5-4.3-.6-8-2.9-11.4ZM9.9 14.5c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8Zm4.2 0c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8Z"/></svg></a>
+        <a href="https://www.instagram.com/vit.astra/?utm_source=ig_web_button_share_sheet" aria-label="Instagram" data-hover><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+      <footer>
+        <span>© ASTRA · GAME DEVELOPMENT · VIT PUNE</span>
+        <span>PLAY · BUILD · CONNECT · GROW</span>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- ===== THIS PAGE'S TILES — edit here ===== -->
+  <script>
+  window.SITE = { projects: [
+    { name:"GAME JAMS", tag:"48-HOUR BUILDS",   da:"#ff9d2f", db:"#ff6a3d" },
+    { name:"UNITY",     tag:"C# · 2D / 3D",     da:"#ffb347", db:"#ff7a1a" },
+    { name:"UNREAL",    tag:"C++ · BLUEPRINTS", da:"#ff8c42", db:"#d24b16" },
+    { name:"GODOT",     tag:"OPEN SOURCE",      da:"#ffc24a", db:"#ff7e2e" },
+    { name:"WEB GAMES", tag:"JS · WEBGL",       da:"#ffab3d", db:"#ff5e2a" },
+    { name:"GAME ART",  tag:"BLENDER · PIXEL",  da:"#ffca5a", db:"#ff8a3d" }
+  ]};
+  </script>
+  <script src="app1.js"></script>
