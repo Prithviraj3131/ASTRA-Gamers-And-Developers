@@ -17,6 +17,7 @@ var IMG_ANIMATION = "assets/animation.jpg";
 var IMG_WORKSHOP = "assets/workshop.png";
 var IMG_ABOUT = "assets/about_us.jpeg";
 var IMG_CORE = "assets/core.jpeg";
+var HEROLOGO_SRC = "assets/club_logo.jpeg";
 
 var PROJECTS = [
   { name:"GAME DESIGNING", tag:"UNREAL ENGINE", 
