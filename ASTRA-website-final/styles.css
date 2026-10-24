@@ -188,6 +188,7 @@
   .tagline b{color:var(--text);font-weight:700}
   .tagline1{font-family:"Space Mono";font-size:13px;letter-spacing:.14em;color:var(--muted);max-width:50ch;line-height:1.7}
   .tagline1 b{color:var(--text);font-weight:700}
+  .tagline2{font-family:"Space Mono";font-size:18px;letter-spacing:.4em;color:var(--muted);max-width:180ch;line-height:1.7}
   .scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-family:"Space Mono";font-size:10px;letter-spacing:.24em;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3}
   .scroll-hint i{width:1px;height:34px;background:linear-gradient(var(--violet),transparent);animation:drop 2s var(--ease) infinite}
   @keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -264,3 +265,40 @@
     .tile .bg{animation:none}
     .scroll-hint i{animation:none}
   }
+
+/* EVENT DETAILS */
+  #event{padding:14vh clamp(18px,4vw,44px) 12vh;background:linear-gradient(120deg,var(--violet),var(--magenta) 55%,var(--lav));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    
+  }
+    
+  .event-head{max-width:1500px;margin:0 auto 46px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .event-headh2{font-family:"Syne";font-weight:800;font-size:clamp(30px,5vw,60px);text-transform:uppercase;letter-spacing:-.01em;line-height:.95;color:var(--white)}
+  .event-headp{font-family:"Space Mono";font-size:11px;letter-spacing:.16em;color:var(--muted);max-width:30ch}
+  .grid-event{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.6vw,26px)}
+
+/* Horizontal Photo Gallery */
+.photo-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 5px 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Optional: hide scrollbar */
+    scrollbar-width: none;
+}
+.photo-scroll::-webkit-scrollbar {
+    display: none;
+}
+.photo-scroll img {
+    flex: 0 0 300px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}

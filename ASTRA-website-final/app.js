@@ -18,7 +18,7 @@ var IMG_BGMI = "assets/bgmi1.jpg";
 var IMG_LAN = "assets/lan.jpg";
 var IMG_ABOUT = "assets/about_us.jpeg";
 var IMG_CORE = "assets/core.jpeg";
-var HEROLOGO_SRC = "assets/club_logo.jpeg";
+var HEROLOGO = "assets/logo2.png";
 
 var PROJECTS = [
   { 
