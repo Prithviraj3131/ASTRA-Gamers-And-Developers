@@ -443,16 +443,16 @@ document.head.appendChild(css);
   function place(r){ card.style.top=r.top+"px"; card.style.left=r.left+"px"; card.style.width=r.width+"px"; card.style.height=r.height+"px"; card.style.borderRadius="22px"; }
   function full(){ card.style.top="0px"; card.style.left="0px"; card.style.width="100vw"; card.style.height="100vh"; card.style.borderRadius="0px"; }
 
-  function open(p, tile){
+  function open(p, tile, sourceTile, customDesc){
     if (busy) return;
-    lastRect = tile.getBoundingClientRect();
+    lastRect = (sourceTile || tile).getBoundingClientRect();lastRect = tile.getBoundingClientRect();
     var i = [].indexOf.call(grid.children, tile);
     if (p.img){ bg.style.backgroundImage = "url('"+p.img+"')"; }
     else { bg.style.backgroundImage = ""; bg.style.background = gradBg(warm ? (p.da||p.a) : p.a, warm ? (p.db||p.b) : p.b); }
     eIdx.textContent = ("0"+(i+1)).slice(-2) + " / ASTRA";
     eTtl.textContent = p.name;
     eTag.textContent = p.tag;
-    eDesc.innerHTML = p.desc || "More details coming soon.";
+    eDesc.innerHTML = customDesc || p.desc || "More details coming soon.";eDesc.innerHTML = p.desc || "More details coming soon.";
     place(lastRect);
     modal.classList.add("open");
     void card.offsetWidth;
@@ -475,25 +475,45 @@ document.head.appendChild(css);
     e.preventDefault();
     open(PROJECTS[i], tile);
   });
-  document.querySelectorAll("[data-card]").forEach(function(link){
-  link.addEventListener("click", function(e){
+  
+document.querySelectorAll("[data-card]").forEach(function(link) {
+  link.addEventListener("click", function(e) {
     e.preventDefault();
 
     var name = link.getAttribute("data-card");
 
-    var index = PROJECTS.findIndex(function(project){
+    var index = PROJECTS.findIndex(function(project) {
       return project.name === name;
     });
 
-    if(index === -1) return;
+    if (index === -1) return;
 
     var tile = grid.children[index];
+    if (!tile) return;
 
-    if(tile){
-      open(PROJECTS[index], tile);
+    var photoList = link.getAttribute("data-photos");
+    var customDesc = null;
+
+    if (photoList) {
+      var photos = photoList.split(",")
+        .map(function(path) { return path.trim(); })
+        .filter(Boolean);
+
+      customDesc =
+        '<h2>ASTRA IGNITE — BGMI</h2>' +
+        '<p>Event highlights and moments from ASTRA IGNITE.</p>' +
+        '<div class="ignite-expanded-photos">' +
+        photos.map(function(src) {
+          return '<img src="' + src +
+            '" alt="ASTRA IGNITE BGMI event photo" loading="lazy">';
+        }).join("") +
+        '</div>';
     }
+
+    open(PROJECTS[index], tile, link, customDesc);
   });
 });
+
   modal.querySelector(".tm-close").addEventListener("click", close);
   modal.querySelector(".tm-backdrop").addEventListener("click", close);
   card.addEventListener("click", function(e){ if (!e.target.closest(".tm-content") || e.target === card) close(); });

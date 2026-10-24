@@ -302,3 +302,86 @@
     border-radius: 10px;
     display: block;
 }
+
+/* event photos card */
+
+/* ASTRA IGNITE cards */
+.ignite-photo-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.ignite-photo-card {
+  position: relative;
+  display: block;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 18px;
+  color: white;
+  text-decoration: none;
+  background: #08080a;
+  border: 1px solid rgba(255,255,255,.12);
+  transition: transform .3s ease, border-color .3s ease;
+}
+
+.ignite-photo-card .bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover !important;
+  background-position: center;
+  transition: transform .5s ease;
+}
+
+.ignite-photo-card:hover .bg {
+  transform: scale(1.06);
+}
+
+.ignite-photo-card:hover {
+  border-color: #c77dff;
+}
+
+@media (max-width: 900px) {
+  .ignite-photo-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .ignite-photo-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ignite-photo-card {
+    height: 230px;
+  }
+}
+
+.ignite-expanded-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.ignite-expanded-photos img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+@media (max-width: 600px) {
+  .ignite-expanded-photos {
+    grid-template-columns: 1fr;
+  }
+
+  .ignite-expanded-photos img {
+    height: auto;
+    max-height: 400px;
+  }
+}
+
